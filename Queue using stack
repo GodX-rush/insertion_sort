@@ -1,0 +1,68 @@
+#include <iostream>
+#define SIZE 5
+using namespace std;
+
+class Stack {
+public:
+    int top = -1;
+    int arr[SIZE];
+
+    void push(int element) {
+        if (top == SIZE - 1) {
+            cout << "Full" << endl;
+            return;
+        }
+        top++;
+        arr[top] = element;
+    }
+
+    int pop() {
+        if (top == -1) {
+            cout << "Empty" << endl;
+            return -1; 
+        }
+        int data = arr[top];
+        top--;
+        return data;
+    }
+
+    bool empty() {
+        return top == -1;
+    }
+};
+
+class Queue {
+public:
+    Stack s1, s2;
+
+    void push(int data) {
+        while (!s1.empty()) {
+            s2.push(s1.pop());
+        }
+        cout << "The element pushed is " << data << endl;
+        s1.push(data);
+        while (!s2.empty()) {
+            s1.push(s2.pop());
+        }
+    }
+
+    int pop() {
+        if (s1.empty()) {
+            cout << "Queue is empty" << endl;
+            return -1; // Return error indicator
+        }
+        int val = s1.pop();
+        cout << "The element popped is " << val << endl;
+        return val;
+    }
+};
+
+int main() {
+    Queue q;
+    q.push(3);
+    q.push(4);
+    q.pop();
+    q.push(5);
+
+    return 0;
+}
