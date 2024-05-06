@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+#define size 10
+class Queue
+{
+    private:
+    int arr[size];
+    int front=-1;
+    int rear=-1;
+    public:
+    void insertq(int element){
+        if(rear==(size-1)){
+            cout<<"Queue is Full"<<endl;
+        }
+        rear++;
+        arr[rear]=element;
+        if(front==-1){
+            front=0;
+        }
+    }
+    int deleteq(){
+        if(front==(-1) || front>rear){
+            cout<<"Queue is empty"<<endl;
+        }
+        int data=arr[front];
+        front++;
+        return data;
+    }
+};
+int main() {
+   Queue q;
+  q.insertq(11);
+  q.insertq(12);
+  q.insertq(13);
+  q.insertq(14);
+  q.insertq(15);
+  q.insertq(16);
+  q.insertq(17);
+  q.insertq(18);
+  q.insertq(19);
+  q.insertq(20);
+  
+  int i=q.deleteq();
+  cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+  i=q.deleteq();
+   cout<<"Element deleted="<<i<<endl;
+ 
+ 
+   
+    return 0;
+}
